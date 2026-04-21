@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=VT323&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-slop-bg:       #0a0a09;
+  --color-slop-surface:  #111110;
+  --color-slop-surface2: #171715;
+  --color-slop-border:   #1e1e1b;
+  --color-slop-border2:  #272722;
+  --color-slop-primary:  #e2dfd6;
+  --color-slop-secondary:#6e6b62;
+  --color-slop-muted:    #383832;
+  --color-slop-dim:      #222220;
+  --color-slop-ink:      #bfbcb3;
+
+  --font-courier: "Courier Prime", "Courier New", monospace;
+  --font-vt323:   "VT323", monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  background: #0d0d0c;
+}
+
+body {
+  background-color: var(--color-slop-bg);
+  color: var(--color-slop-primary);
+  font-family: "Courier Prime", "Courier New", monospace;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  position: relative;
+  overflow-x: hidden;
+  box-shadow: 0 0 80px rgba(0,0,0,0.8);
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.6;
+}
+
+@keyframes waveform-pulse {
+  0%, 100% { transform: scaleY(0.4); }
+  50%       { transform: scaleY(1); }
+}
