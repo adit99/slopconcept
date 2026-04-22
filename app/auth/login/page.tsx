@@ -13,11 +13,6 @@ export default function LoginPage() {
     e.preventDefault()
     setError('')
 
-    if (!email.endsWith('.edu')) {
-      setError('only .edu emails for now')
-      return
-    }
-
     setLoading(true)
     try {
       const supabase = createClient()
@@ -52,13 +47,13 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="w-full flex flex-col gap-3">
           <div className="border border-slop-border2 rounded-lg p-4 bg-slop-surface flex flex-col gap-2">
             <label className="font-vt323 text-[13px] text-slop-dim uppercase tracking-widest">
-              your .edu email
+              your email
             </label>
             <input
               type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              placeholder="you@school.edu"
+              placeholder="you@email.com"
               className="bg-transparent border-none outline-none font-courier text-[15px] text-slop-ink placeholder:text-slop-dim"
               autoComplete="email"
               required
@@ -79,9 +74,6 @@ export default function LoginPage() {
             {loading ? 'sending...' : 'get link'}
           </button>
 
-          <div className="font-courier text-[12px] text-slop-dim text-center italic">
-            school email only for now. expanding soon.
-          </div>
         </form>
       )}
     </div>
