@@ -42,7 +42,7 @@ export default function LoginPage() {
       const { data, error: err } = await supabase.auth.verifyOtp({
         email,
         token: code,
-        type: 'email',
+        type: 'magiclink',
       })
       if (err) throw err
 
@@ -99,10 +99,9 @@ export default function LoginPage() {
             <label className="font-vt323 text-[13px] text-slop-dim uppercase tracking-widest">6-digit code</label>
             <input
               type="text"
-              inputMode="numeric"
               value={code}
-              onChange={e => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-              placeholder="000000"
+              onChange={e => setCode(e.target.value.slice(0, 8))}
+              placeholder="------"
               className="bg-transparent border-none outline-none font-courier text-[24px] text-slop-ink placeholder:text-slop-dim tracking-widest"
               autoComplete="one-time-code"
               autoFocus
